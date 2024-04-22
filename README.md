@@ -1,1 +1,1 @@
-https://faidonexternalcatalog.netify.app/
+https://faidonexternalcatalog.netlify.app/
