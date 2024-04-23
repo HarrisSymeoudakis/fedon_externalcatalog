@@ -8,39 +8,47 @@ const endpoint = '/Y2/90478305_003_TEST/api/products-search/v1';
 const username = '90478305_003_TEST\AI';
 const password = '1234';
 
-// Encode the username and password for basic authentication
 const basicAuthCredentials = btoa(`${username}:${password}`);
 
 // Function to retrieve information from the server
 function retrieveInformation() {
-    // Make a GET request using Fetch API
-    fetch(serverUrl + endpoint, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Basic ${basicAuthCredentials}`,
-            'Content-Type': 'application/json'
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Define the request method, URL, and asynchronous flag
+    xhr.open('GET', serverUrl + endpoint, true);
+
+    // Set request headers
+    xhr.setRequestHeader('Authorization', `Basic ${basicAuthCredentials}`);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    // Define the function to handle the response
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // If the request was successful, parse the response JSON
+            var data = JSON.parse(xhr.responseText);
+            console.log('Response data:', data);
+            alert('Data retrieved successfully!');
+        } else {
+            // If the request failed, log the error
+            console.error('Error:', xhr.status);
+            alert('An error occurred. Please try again.');
         }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Handle the response data here
-        console.log('Response data:', data);
-        alert('Data retrieved successfully!');
-    })
-    .catch(error => {
-        // Handle errors here
-        console.error('Error:', error);
+    };
+
+    // Define the function to handle errors
+    xhr.onerror = function () {
+        console.error('Request failed');
         alert('An error occurred. Please try again.');
-    });
+    };
+
+    // Send the request
+    xhr.send();
 }
 
 // Attach the retrieveInformation() function to the click event of the button
 document.getElementById('retrieveButton').addEventListener('click', retrieveInformation);
+
 
 
 const folderId = "90478305_003_TEST";
