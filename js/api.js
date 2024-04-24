@@ -1,5 +1,5 @@
 // Define the URL of the server where your endpoint is hosted
-const serverUrl = 'http://localhost:3456';
+const serverUrl = 'http://localhost:3456/Y2/90478305_003_TEST/api/products-search/v1';
 
 // Define the endpoint you want to request
 const endpoint = '/Y2/90478305_003_TEST/api/products-search/v1';
@@ -16,7 +16,7 @@ function retrieveInformation() {
     var xhr = new XMLHttpRequest();
 
     // Define the request method, URL, and asynchronous flag
-    xhr.open('GET', serverUrl + endpoint, true);
+    xhr.open('GET', serverUrl, true);
 
     // Set request headers
     xhr.setRequestHeader('Authorization', `Basic ${basicAuthCredentials}`);
