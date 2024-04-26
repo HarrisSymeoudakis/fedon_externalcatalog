@@ -494,7 +494,7 @@ cartItems.forEach((item, index) => {
     item.itemLineId = index + 1; // Increment index by 1
 });
 
-var customerId = "HQ00100001";
+var customerId = "BR00100002";
 var postData = {
     "externalReference": "SimpleSale",
     "basketType": "RECEIPT",
