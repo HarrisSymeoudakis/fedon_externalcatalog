@@ -228,7 +228,7 @@ function fetchAndGeneratePortfolioItems() {
 
         setTimeout(initiateFastBuy, 500);
         setTimeout(initiateAddToCart, 500);
-    setTimeout(initiateRemove, 500);
+        setTimeout(initiateRemove, 500);
         
 
         
@@ -352,9 +352,10 @@ localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
 
-var removeFromCartButtonElements = document.querySelectorAll('.removeFromBasket');
+
 
 function initiateRemove(){
+var removeFromCartButtonElements = document.querySelectorAll('.removeFromBasket');
 removeFromCartButtonElements.forEach(function(button) {
 button.addEventListener('click', function(event) {
     const itemCode = event.target.getAttribute('item'); // Get item code from button attribute
