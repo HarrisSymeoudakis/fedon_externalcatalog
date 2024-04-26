@@ -461,8 +461,8 @@ return new Promise((resolve, reject) => {
 document.getElementById('viewBasketAll').addEventListener('click', function() {
 var xhr = new XMLHttpRequest();
 
-var postUrl = 'https://proxyserver-z74x.onrender.com/et/pos/external-basket/v1'; // Proxy server URL
-//var postUrl = 'http://localhost:3000/et/pos/external-basket/v1'; // Proxy server URL
+// var postUrl = 'https://proxyserver-z74x.onrender.com/et/pos/external-basket/v1'; // Proxy server URL
+var postUrl = 'http://localhost:3000/et/pos/external-basket/v1'; // Proxy server URL
 //var postUrl = 'https://retail-services.cegid.cloud/t/pos/external-basket/v1'; // Proxy server URL
 xhr.open('POST', postUrl, true);
 xhr.setRequestHeader('Content-Type', 'application/json');
