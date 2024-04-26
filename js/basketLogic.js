@@ -228,6 +228,7 @@ function fetchAndGeneratePortfolioItems() {
 
         setTimeout(initiateFastBuy, 500);
         setTimeout(initiateAddToCart, 500);
+    setTimeout(initiateRemove, 500);
         
 
         
@@ -353,6 +354,7 @@ localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
 var removeFromCartButtonElements = document.querySelectorAll('.removeFromBasket');
 
+function initiateRemove(){
 removeFromCartButtonElements.forEach(function(button) {
 button.addEventListener('click', function(event) {
     const itemCode = event.target.getAttribute('item'); // Get item code from button attribute
@@ -363,6 +365,7 @@ button.addEventListener('click', function(event) {
 openPopup("successfully removed item: "+itemName , 3000);
 });
 });
+}
 
 function removeFromCart(itemCode, basePrice) {
 const existingItems = localStorage.getItem('cartItems');
