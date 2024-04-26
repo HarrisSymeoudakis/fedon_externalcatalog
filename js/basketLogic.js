@@ -4,31 +4,31 @@ function generateUniqueId() {
 
 
 
-function fetchImageURL(code) {
-    const swaggerEnv = 'https://90478305-partner-retail-ondemand.cegid.cloud/Y2';
-    // const swaggerEnv = 'http://localhost:3000/Y2';
-    const folderId = '90478305_003_TEST';
-    const apiUrl = `${swaggerEnv}/${folderId}/api/items/${code}/images/v1`;
+// function fetchImageURL(code) {
+//     const swaggerEnv = 'https://90478305-partner-retail-ondemand.cegid.cloud/Y2';
+//     // const swaggerEnv = 'http://localhost:3000/Y2';
+//     const folderId = '90478305_003_TEST';
+//     const apiUrl = `${swaggerEnv}/${folderId}/api/items/${code}/images/v1`;
 
-    // Use a CORS proxy service like https://cors-anywhere.herokuapp.com/ to proxy the request
-    const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
+//     // Use a CORS proxy service like https://cors-anywhere.herokuapp.com/ to proxy the request
+//     const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
 
-    // Construct basic authentication credentials
-    const username = '90478305_003_TEST\\AI';
-    const password = '1234';
-    const credentials = btoa(`${username}:${password}`);
+//     // Construct basic authentication credentials
+//     const username = '90478305_003_TEST\\AI';
+//     const password = '1234';
+//     const credentials = btoa(`${username}:${password}`);
 
-    return fetch(proxyUrl, {
-        headers: {
-            'Authorization': `Basic ${credentials}`
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Extract the image URL from the response
-        return data.url; // Adjust this according to the response structure
-    });
-}
+//     return fetch(proxyUrl, {
+//         headers: {
+//             'Authorization': `Basic ${credentials}`
+//         }
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         // Extract the image URL from the response
+//         return data.url; // Adjust this according to the response structure
+//     });
+// }
 
 
 // Function to generate portfolio item HTML
@@ -36,46 +36,46 @@ function generatePortfolioItem(counter, code, xxx, yyy) {
     const portfolioItemsContainer = document.getElementById('portfolioItems');
     const portfolioModalId = generateUniqueId();
 
-    // Create portfolio item
-    // const portfolioItemHTML = `
-    //     <div class="col-lg-4 col-sm-6 mb-4">
-    //         <div class="portfolio-item">
-    //             <a class="portfolio-link" data-bs-toggle="modal" href="#${portfolioModalId}">
-    //                 <div class="portfolio-hover">
-    //                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-    //                 </div>
-    //                 <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
-    //             </a>
-    //             <div class="portfolio-caption">
-    //                 <div class="section-heading text-uppercase">${xxx}</div>
-    //                 <div class="portfolio-caption-subheading text-muted">€${yyy}</div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // `;
-    // portfolioItemsContainer.innerHTML += portfolioItemHTML;
-
-    fetchImageURL(code).then(imageURL => {
-        // Generate portfolio item HTML with dynamically loaded image URL
-        const portfolioItemHTML = `
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="#${portfolioModalId}">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="${imageURL}" alt="..." />
-                    </a>
-                    <div class="portfolio-caption">
-                        <div class="section-heading text-uppercase">${xxx}</div>
-                        <div class="portfolio-caption-subheading text-muted">€${yyy}</div>
+    Create portfolio item
+    const portfolioItemHTML = `
+        <div class="col-lg-4 col-sm-6 mb-4">
+            <div class="portfolio-item">
+                <a class="portfolio-link" data-bs-toggle="modal" href="#${portfolioModalId}">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
+                    <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                </a>
+                <div class="portfolio-caption">
+                    <div class="section-heading text-uppercase">${xxx}</div>
+                    <div class="portfolio-caption-subheading text-muted">€${yyy}</div>
                 </div>
             </div>
-        `;
-        // Append the portfolio item HTML to the container
-        portfolioItemsContainer.innerHTML += portfolioItemHTML;
-    });
+        </div>
+    `;
+    portfolioItemsContainer.innerHTML += portfolioItemHTML;
+
+    // fetchImageURL(code).then(imageURL => {
+    //     // Generate portfolio item HTML with dynamically loaded image URL
+    //     const portfolioItemHTML = `
+    //         <div class="col-lg-4 col-sm-6 mb-4">
+    //             <div class="portfolio-item">
+    //                 <a class="portfolio-link" data-bs-toggle="modal" href="#${portfolioModalId}">
+    //                     <div class="portfolio-hover">
+    //                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+    //                     </div>
+    //                     <img class="img-fluid" src="${imageURL}" alt="..." />
+    //                 </a>
+    //                 <div class="portfolio-caption">
+    //                     <div class="section-heading text-uppercase">${xxx}</div>
+    //                     <div class="portfolio-caption-subheading text-muted">€${yyy}</div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     `;
+    //     // Append the portfolio item HTML to the container
+    //     portfolioItemsContainer.innerHTML += portfolioItemHTML;
+    // });
 
     const portfolioModalContainer = document.createElement('div');
 portfolioModalContainer.innerHTML = `
