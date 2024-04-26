@@ -219,7 +219,7 @@ function fetchAndGeneratePortfolioItems() {
                     const code = columns[0];
                     if (!uniqueCodes.has(unCode)) {
                         uniqueCodes.add(unCode);
-                        generatePortfolioItem(counter++, code, columns[2], columns[4]);
+                        generatePortfolioItem(counter++, code, columns[2], columns[4].replace(/,/g, '.'));
                     }
                 }
             }
@@ -254,7 +254,7 @@ function fetchAndGenerateRemainingItems() {
                     const code = columns[0];
                     if (!uniqueCodes.has(unCode)) {
                         uniqueCodes.add(unCode);
-                        generatePortfolioItem(counter++, code, columns[2], columns[4]);
+                        generatePortfolioItem(counter++, code, columns[2], columns[4].replace(/,/g, '.'));
                     }
                     
                 }
