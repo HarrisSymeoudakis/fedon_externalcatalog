@@ -36,7 +36,7 @@ function generatePortfolioItem(counter, code, xxx, yyy) {
     const portfolioItemsContainer = document.getElementById('portfolioItems');
     const portfolioModalId = generateUniqueId();
 
-    Create portfolio item
+  
     const portfolioItemHTML = `
         <div class="col-lg-4 col-sm-6 mb-4">
             <div class="portfolio-item">
