@@ -1,32 +1,35 @@
 function generateUniqueId() {
     return 'portfolioModal' + Math.random().toString(36).substring(7);
 }
-// const swaggerEnv = 'https://90478305-partner-retail-ondemand.cegid.cloud/Y2';
+
 
 
 function fetchImageURL(code) {
-    
-    const swaggerEnv = 'http://localhost:3000/Y2';
+    const swaggerEnv = 'https://90478305-partner-retail-ondemand.cegid.cloud/Y2';
+    // const swaggerEnv = 'http://localhost:3000/Y2';
     const folderId = '90478305_003_TEST';
     const apiUrl = `${swaggerEnv}/${folderId}/api/items/${code}/images/v1`;
+
+    // Use a CORS proxy service like https://cors-anywhere.herokuapp.com/ to proxy the request
+    const proxyUrl = `https://cors-anywhere.herokuapp.com/${apiUrl}`;
 
     // Construct basic authentication credentials
     const username = '90478305_003_TEST\\AI';
     const password = '1234';
     const credentials = btoa(`${username}:${password}`);
 
-    return fetch(apiUrl, {
+    return fetch(proxyUrl, {
         headers: {
             'Authorization': `Basic ${credentials}`
         }
     })
-    .then(response => console.log(response))
     .then(response => response.json())
     .then(data => {
         // Extract the image URL from the response
         return data.url; // Adjust this according to the response structure
     });
 }
+
 
 // Function to generate portfolio item HTML
 function generatePortfolioItem(counter, code, xxx, yyy) {
